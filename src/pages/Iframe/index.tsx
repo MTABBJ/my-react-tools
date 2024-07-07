@@ -9,6 +9,7 @@ interface IProps {
   title?: string;
   name?: string;
 }
+
 const IframePage: React.FC<IProps> = (props) => {
   const { title = 'Iframe Page', name = 'internal-iframe' } = props;
   const iframeRef = useRef<HTMLIFrameElement>(null);

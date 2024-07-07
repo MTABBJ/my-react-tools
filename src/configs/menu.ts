@@ -203,7 +203,7 @@ const MenuList: Menu.MenuItemType[] = [
     path: '/user/center',
     label: '个人中心',
     icon: 'icon-user-permissions',
-    permission: (userInfo) => userInfo.roles.includes('admin'),
+    permission: (userInfo:any) => userInfo.roles.includes('admin'),
     children: [
       {
         path: '/user/center/index',

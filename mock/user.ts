@@ -11,11 +11,11 @@ Mock.mock(/api\/user\/info/, 'get', (options) => {
       id: 1,
       username: 'admin',
       nickname: 'Moto',
-      avatar: '',
+      avatar: './icon.svg',
       password: '',
       gender: Random.natural(1, 2),
-      email: '13612096789@163.com',
-      mobile: '13612096789',
+      email: '136xxxxxxxx@163.com',
+      mobile: '136xxxxxxxx',
       roles: ['admin']
     }
   };
@@ -73,7 +73,6 @@ Mock.mock(/api\/user\/list/, 'get', (options) => {
           nickname: '@cname',
           avatar: () => Random.dataImage('200x200'),
           email: '@email',
-          // 这个代码是 chatGPT写的
           mobile: () => Mock.mock(/^1[3456789]\d{9}$/).replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2'),
           'gender|1-2': 0,
           create_time: '@date(yyyy-MM-dd HH:MM:ss)'

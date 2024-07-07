@@ -16,12 +16,21 @@
 
       .logo {
         .logo-img {
-          color: #30c6fa;
-          font-size: 22px;
-          animation: rotate 20s linear infinite;
+          // color: #fdabcb;
+          width: 2rem;
+          animation: updown 1s infinite ease-in-out;
+        }
+        @keyframes updown {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(10px);
+          }
         }
         .logo-text {
           font-size: 18px;
+          font-weight: 700;
           margin-left: 6px;
         }
       }

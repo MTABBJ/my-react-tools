@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting...</title>
+    <script>
+      const path = location.pathname;
+      const pos = path.indexOf('\/', 1);
+      const repo = path.substring(0, pos);
+      const ghpage = path.substring(pos);
+      const redirectUrl = location.origin+repo+'/?ghpage='+encodeURIComponent(ghpage+location.search);
+      window.location.replace(redirectUrl);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>

@@ -1,4 +1,5 @@
 import Iconfont from '@/components/Iconfont';
+import { Children } from 'react';
 
 const MenuList: Menu.MenuItemType[] = [
   {
@@ -8,9 +9,21 @@ const MenuList: Menu.MenuItemType[] = [
     permission: 'admin'
   },
   {
-    label: '示例页面',
+    label:'复刻页面',
+    icon: 'icon-link',
+    path: '/replica',
+    children:[
+      {
+        label: '市场行情',
+        icon: 'icon-link',
+        path: '/replica/research',
+      },
+    ]
+  },
+  {
+    label: '测试页面',
     path: '/example',
-    icon: 'icon-example',
+    icon: 'icon-all',
     children: [
       {
         label: '列表页',
@@ -56,24 +69,24 @@ const MenuList: Menu.MenuItemType[] = [
       },
       {
         label: 'Tabs标签页',
-        icon: 'icon-list',
+        icon: 'icon-lable',
         path: '/example/tabs',
         children: [
           {
             label: '标签管理',
-            icon: 'icon-list',
+            icon: 'icon-lable',
             path: '/example/tabs/manage'
           }
         ]
       },
       {
         label: '空白页',
-        icon: 'icon-example',
+        icon: 'icon-square',
         path: '/blank'
       },
       {
         label: '404',
-        icon: 'icon-example',
+        icon: 'icon-error',
         path: '/404'
       }
     ]
@@ -81,34 +94,32 @@ const MenuList: Menu.MenuItemType[] = [
   {
     label: '徽标示例',
     path: '/badge',
-    icon: 'icon-example',
+    icon: 'icon-lable',
     children: [
       {
         label: '红点徽标',
-        icon: 'icon-list',
+        icon: 'icon-lable',
         badge: 'dot',
         path: '/badge/dot'
       },
       {
         label: '数字徽标',
-        icon: 'icon-example',
+        icon: 'icon-lable',
         badge: 98,
         path: '/badge/count'
       }
     ]
   },
-  // { type: 'divider' },
-
   {
     path: '/article',
     label: '文章管理',
-    icon: 'icon-article',
+    icon: 'icon-suggest',
     permission: 'admin',
     children: [
       {
         path: '/article/list',
         label: '文章列表',
-        icon: 'icon-article'
+        icon: 'icon-suggest'
       },
       {
         // 演示子页面不和父页面路径前缀一致时, 怎么去自动高亮菜单显示
@@ -126,7 +137,7 @@ const MenuList: Menu.MenuItemType[] = [
       {
         path: '/article/category',
         label: '分类管理',
-        icon: 'icon-list'
+        icon: 'icon-category'
       }
     ]
   },
@@ -155,25 +166,25 @@ const MenuList: Menu.MenuItemType[] = [
   {
     path: '/iframe',
     label: '外部页面',
-    icon: 'icon-href',
+    icon: 'icon-link',
     permission: 'admin',
     children: [
-      {
-        path: 'https://ant-design.antgroup.com/components/overview-cn',
-        label: 'antd文档(外链)',
-        icon: 'icon-document',
-        type: 'url'
-      },
+      // {
+      //   path: 'https://ant-design.antgroup.com/components/overview-cn',
+      //   label: 'antd文档(外链)',
+      //   icon: 'icon-link',
+      //   type: 'url'
+      // },
       {
         path: 'https://ant-design.antgroup.com/components/overview-cn/',
         label: 'antd文档(内嵌)',
-        icon: 'icon-document',
+        icon: 'icon-link',
         type: 'iframe'
       },
       {
         path: 'https://baidu.com',
         label: '百度',
-        icon: 'icon-document',
+        icon: 'icon-link',
         type: 'iframe'
       }
     ]
@@ -184,36 +195,35 @@ const MenuList: Menu.MenuItemType[] = [
     label: '文档',
     // 没写文档, 隐藏
     hideInMenu: true,
-    icon: 'icon-document',
+    icon: 'icon-link',
     children: [
       {
         path: '/document/start',
         label: '开始使用',
-        icon: 'icon-document'
+        icon: 'icon-link'
       },
       {
         path: '/document/package.json',
         label: 'Package文件说明',
-        icon: 'icon-document'
+        icon: 'icon-link'
       }
     ]
   },
-  // { type: 'divider' },
   {
     path: '/user/center',
     label: '个人中心',
-    icon: 'icon-user-permissions',
+    icon: 'icon-customer',
     permission: (userInfo:any) => userInfo.roles.includes('admin'),
     children: [
       {
         path: '/user/center/index',
         label: '个人中心',
-        icon: 'icon-example'
+        icon: 'icon-customer'
       },
       {
         path: '/user/center/update',
         label: '修改信息',
-        icon: 'icon-document'
+        icon: 'icon-suggest'
       }
     ]
   }

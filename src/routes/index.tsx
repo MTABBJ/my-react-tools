@@ -8,6 +8,7 @@ import PageLoading from '@/components/Loading/PageLoading';
 
 import { UserCenterPage, UserCenterUpdatePage } from '@/pages/UserCenter';
 import { BlankPage, ExampleUserListPage } from '@/pages/Example';
+import { ResearchPage } from '@/pages/Replica';
 import { NotFoundPage } from '@/pages/Error';
 import { ArticleCreatePage, ArticleUpdatePage, ArticleCategoryPage } from '@/pages/Article';
 
@@ -62,7 +63,14 @@ export function routeRules() {
             }
           ]
         },
-
+        {
+          path: '/replica',
+          children: [
+            {
+              path: '/replica/research',element: <ResearchPage />
+            }
+          ]
+        },
         {
           path: '/example',
           children: [

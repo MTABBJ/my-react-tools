@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     return (
       <div className="left">
         <div className="logo">
-          <img src={'/icon.svg'} className="logo-img" />
+          {/* <img src={'/icon.svg'} className="logo-img" /> */}
           <span className="logo-text">my-react-tools</span>
         </div>
         <div>

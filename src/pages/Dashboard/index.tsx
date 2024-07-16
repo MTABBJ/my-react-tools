@@ -15,7 +15,7 @@ const DashboardPage: React.FC = () => {
   return (
     <>
       <div>
-        <Row gutter={24}>
+        <Row gutter={[16, 16]}>
           <Col span={6}>
             <Card bordered={false}>
               <Statistic title="今日销售额" value={126560} precision={2} prefix="$" />
@@ -57,7 +57,7 @@ const DashboardPage: React.FC = () => {
           </Col>
         </Row>
         <br />
-        <Row gutter={16}>
+        <Row gutter={[16, 16]}>
           <Col span={18} style={{ height: 300 }}>
             <VisitLineChart />
           </Col>
@@ -89,7 +89,7 @@ const DashboardPage: React.FC = () => {
           </Col>
         </Row>
         <br />
-        <Row gutter={16}>
+        <Row gutter={[16, 16]}>
           <Col span={12}>
             <TodoList />
           </Col>

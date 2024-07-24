@@ -41,7 +41,7 @@ const SettingProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
       fixedMenu: true,
       showFooter: true,
       multitabMode: false,
-      primaryColor: '#FDABCB',
+      primaryColor: '#ee519c',
       ...settingsCache
     } as SettingContextValue['settings'];
   }, []);

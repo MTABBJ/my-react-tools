@@ -7,7 +7,7 @@ const NotifyIcon: React.FC<IProps> = (props) => {
   return (
     <Badge count={98}>
       <Popover arrow={false} content={<NotifyCard />} placement={'bottomRight'} trigger="click">
-        <Iconfont title="通知提醒" type="icon-notify" className="action-icon" />
+        <Iconfont title="通知提醒" type="icon-remind" className="action-icon" />
       </Popover>
     </Badge>
   );

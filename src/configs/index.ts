@@ -4,7 +4,7 @@ const Config = {
 
   tokenKey: 'Authorization',
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL,
-  iconFontUrl: '//at.alicdn.com/t/c/font_4623264_ofmo8z76bao.js'
+  iconFontUrl: '//at.alicdn.com/t/c/font_4623264_knfkd148feq.js'
 };
 
 export default Config;

@@ -1,6 +1,6 @@
 import { itemCategory, radomFloat, randomId } from './const';
 import { SearchOutlined } from '@ant-design/icons';
-import { Col, Input, Row, Card, Tabs, Space } from 'antd';
+import { Col, Input, Row, Card, Tabs, Button } from 'antd';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import './index.less'
@@ -36,13 +36,22 @@ const urls: Urls = {
     key: '京东',
     id: 'jingdong',
   },
+  百川资讯: {
+    url: 'http://www.baiinfo.com/search?wd=',
+    key: '百川资讯',
+    id: 'baichuan',
+  },
+  卓创资讯: {
+    url: 'https://prices.sci99.com/cn/search.aspx?keyword=',
+    key: '卓创资讯',
+    id: 'zhuochuang',
+  },
 };
 
 const Component = () => {
   const [keywords, setKeywords] = useState<any>('');
   const [searchValue, setSearchValue] = useState<any>('');
   const [curUrl, setCurUrl] = useState<any>(urls['阿里巴巴']);
-  const [historyData, setHistoryData] = useState<any>([]);
 
   const onChange = (e: any) => {
     setSearchValue(e);
@@ -68,13 +77,11 @@ const Component = () => {
     for (let n = 0; n < l; n++) {
       d.push(singleHisDate(keywords, n));
     }
-    setHistoryData(d);
   }, [keywords]);
 
   const items: any = () => {
-    const d: any = [];
-    Object.keys(urls).map((key: any, index) => {
-      d.push({
+    return Object.keys(urls).map((key: any, index) => {
+      return {
         label: <div style={{ fontSize: '1.2rem', padding: '0 1.2rem' }}>{urls[key].key}</div>,
         key: key,
         children: (
@@ -84,10 +91,8 @@ const Component = () => {
             src={`${urls[key].url}${keywords}`}
           ></iframe>
         ),
-      });
-    });
-
-    return d;
+      };
+    })
   };
 
   const changeTab = (key: any) => {
@@ -97,15 +102,17 @@ const Component = () => {
   return (
     <>
       {keywords === '' ? (
-        <Card title='常用搜索' extra={
-          <Input.Search
-            placeholder="输入搜索关键词"
-            allowClear
-            enterButton={<SearchOutlined />}
-            size="large"
-            onSearch={onChange}
-          />
-        }>
+        <Card
+          title='常用搜索'
+          extra={
+            <Input.Search
+              placeholder="输入搜索关键词"
+              allowClear
+              enterButton={<SearchOutlined />}
+              size="large"
+              onSearch={onChange}
+            />
+          }>
           <Row
             style={{
               borderTop: '1px solid #eee',
@@ -137,10 +144,13 @@ const Component = () => {
             )}
           </Row>
         </Card>
-      )
-        : null}
+      ) : null}
 
-      <Card style={{ width: '100%', height: '70vh', display: `${keywords === '' ? 'none' : 'block'}` }}>
+      <Card
+        style={{ width: '100%', display: `${keywords === '' ? 'none' : 'block'}` }}
+        title='常用搜索'
+        extra={<Button onClick={() => setKeywords('')}>返回</Button>}
+      >
         <Tabs
           onChange={changeTab}
           activeKey={curUrl.key}

@@ -15,7 +15,7 @@ const SettingIcon: React.FC<IProps> = (props) => {
   return (
     <div>
       <SettingDrawer open={open} onClose={handleClose} />
-      <Iconfont onClick={handleOpen} title="设置" type="icon-setting" className="action-icon" />
+      <Iconfont onClick={handleOpen} title="设置" type="icon-settings" className="action-icon" />
     </div>
   );
 };

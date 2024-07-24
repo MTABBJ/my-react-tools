@@ -1,6 +1,3 @@
-import Iconfont from '@/components/Iconfont';
-import { Children } from 'react';
-
 const MenuList: Menu.MenuItemType[] = [
   {
     label: '控制台',
@@ -17,6 +14,11 @@ const MenuList: Menu.MenuItemType[] = [
         label: '市场行情',
         icon: 'icon-link',
         path: '/replica/research',
+      },
+      {
+        label: '导出为Word',
+        icon: 'icon-link',
+        path: '/replica/exportWord',
       },
     ]
   },

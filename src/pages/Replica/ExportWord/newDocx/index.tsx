@@ -17,12 +17,13 @@ import getChartDataUrl from './base64';
 import { table2_2 } from './tableOption'
 import { getOption as getStaticOption } from '../option';
 import { message } from 'antd';
+import {exportWordData } from '@/constants/exportWordData'
 
 export const newDocx = async (source: any) => {
     const echartUrl = getChartDataUrl(
         getStaticOption(source, false),'1000px', '500px'
     )
-    const tableData = source.echartsData;
+    const tableData = exportWordData;
 
     try {
         const doc = new Document({
@@ -240,7 +241,7 @@ export const newDocx = async (source: any) => {
                             ],
                         }),
                         // 表格
-                        // table2_2(tableData),
+                        table2_2(tableData),
                     ]
                 }
             ]
@@ -248,12 +249,13 @@ export const newDocx = async (source: any) => {
         const blob = await Packer.toBlob(doc)
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = '原料煤采购报告.docx';
+        link.download = '测试采购报告.docx';
 
         // Click the link to download the file
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        message.success('导出成功！')
 
     } catch (error) {
         message.error('导出失败！')

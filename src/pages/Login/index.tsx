@@ -14,7 +14,6 @@ interface IFormState {
   remember: boolean;
 }
 
-// todo: dark theme 适配
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const { loading: loginRuning, run: submit } = useRequest(postLogin, {

@@ -16,7 +16,6 @@ import { postLogout } from '@/api';
 import { MenuContext } from '@/contexts/Menu';
 import { useNavigate } from 'react-router-dom';
 import {
-  SearchIcon,
   GithubIcon,
   FullScreenIcon,
   ThemeIcon,
@@ -54,7 +53,6 @@ const Header: React.FC = () => {
     const renderIcons = () => {
       return (
         <>
-          <SearchIcon />
           <NotifyIcon />
           <FullScreenIcon />
           <GithubIcon />

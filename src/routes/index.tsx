@@ -8,7 +8,7 @@ import PageLoading from '@/components/Loading/PageLoading';
 
 import { UserCenterPage, UserCenterUpdatePage } from '@/pages/UserCenter';
 import { BlankPage, ExampleUserListPage } from '@/pages/Example';
-import { ResearchPage, ExportWordPage } from '@/pages/Replica';
+import { ResearchPage, ExportWordPage ,WatermarkPage,Three3DPage } from '@/pages/Replica';
 import { NotFoundPage } from '@/pages/Error';
 import { ArticleCreatePage, ArticleUpdatePage, ArticleCategoryPage } from '@/pages/Article';
 
@@ -67,7 +67,9 @@ export function routeRules() {
           path: '/replica',
           children: [
             { path: '/replica/research', element: <ResearchPage /> },
-            { path: '/replica/exportWord', element: <ExportWordPage /> }
+            { path: '/replica/exportWord', element: <ExportWordPage /> },
+            { path: '/replica/watermark', element: <WatermarkPage /> },
+            // { path: '/replica/three3D', element: <Three3DPage /> },
           ]
         },
         {

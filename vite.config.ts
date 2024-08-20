@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { resolve } from 'path';  
 
 function _resolve(dir: string) {
   return path.resolve(__dirname, dir);
@@ -16,7 +17,7 @@ export default defineConfig({
     }
   },
   envDir: _resolve('env'),
-
+ 
   build: {
     rollupOptions: {
       output: {

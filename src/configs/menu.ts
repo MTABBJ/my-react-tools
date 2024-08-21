@@ -25,11 +25,6 @@ const MenuList: Menu.MenuItemType[] = [
         icon: 'icon-link',
         path: '/replica/watermark',
       },
-      {
-        label: '3D模型',
-        icon: 'icon-link',
-        path: '/replica/three3D',
-      },
     ]
   },
   {

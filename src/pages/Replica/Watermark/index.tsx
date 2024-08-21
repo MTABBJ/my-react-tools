@@ -1,66 +1,72 @@
 import React, { useEffect, useRef } from "react";
 import { Divider, Typography, Card } from 'antd';
-import { log } from "console";
 const { Title, Paragraph, Text, Link } = Typography;
 
 // 获取当前时间
 function curentTime() {
   let newTime = new Date();
   // 获取年
-  let newYarn = newTime.getFullYear()
+  let newYarn = newTime.getFullYear();
   // 获取月
   let newMonth = (newTime.getMonth() + 1) > 9 ? (newTime.getMonth() + 1) : "0" + (newTime.getMonth() + 1);
   // 获取时间
   let newDay = newTime.getDate() > 9 ? newTime.getDate() : "0" + newTime.getDate();
-  return newYarn + '-' + newMonth + ' -' + newDay
+  return newYarn + '-' + newMonth + ' -' + newDay;
 }
 
 function App() {
-  const canvasRef = useRef(null);
-  const bodyRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const bodyRef = useRef<HTMLDivElement | null>(null);
 
   // 画水印
   function waterMark() {
-    // 获取dom节点
     const canvasDom = canvasRef.current;
-    // 设置canvas的大小
-    canvasDom.width = 300
-    canvasDom.height = 200
-    // 获取canvs上下文
-    const ctx = canvasDom.getContext('2d')
-    //设置文字的大小 以及字体样式
-    ctx.font = "30px Verdana"
-    // 设置透明度
-    ctx.fillStyle = 'rgba(0,0,0,.3)'
-    // 设置倾斜度
-    ctx.rotate(0.2)
-    // 填充文字以及位置
-    ctx.fillText(curentTime(), 30, 30)
+    if (canvasDom) {
+      // 设置canvas的大小
+      canvasDom.width = 300;
+      canvasDom.height = 200;
+      // 获取canvs上下文
+      const ctx = canvasDom.getContext('2d');
+      if (ctx) {
+        //设置文字的大小 以及字体样式
+        ctx.font = "30px Verdana";
+        // 设置透明度
+        ctx.fillStyle = 'rgba(0,0,0,.3)';
+        // 设置倾斜度
+        ctx.rotate(0.2);
+        // 填充文字以及位置
+        ctx.fillText(curentTime(), 30, 30);
 
-    // 将它转化为base64
-    const img = canvasDom.toDataURL('image/png')
-    let body = bodyRef.current
-    body.setAttribute('style', `background-image:url("${img}")`)
+        // 将它转化为base64
+        const img = canvasDom.toDataURL('image/png');
+        const body = bodyRef.current;
+        if (body) {
+          body.setAttribute('style', `background-image:url("${img}")`);
+        }
+      }
+    }
   }
 
-
   useEffect(() => {
-    waterMark()
+    waterMark();
   }, []);
-
 
   useEffect(() => {
     // 用MutationObserver监听bodyRef是否被修改
     const observer = new MutationObserver(mutations => {
       for (const mutation of mutations) {
         console.log(mutation.target); // 输出发生变化的节点
-        mutation.target === bodyRef.current && waterMark()
+        if (mutation.target === bodyRef.current) {
+          waterMark();
+        }
       }
     });
-    
-    // 开始监测  
-    observer.observe(bodyRef.current, { attributes: true });
-    
+
+    if (bodyRef.current) {
+      // 开始监测  
+      observer.observe(bodyRef.current, { attributes: true });
+    }
+
     // 组件销毁时停止监测
     return () => {
       observer.disconnect();
@@ -100,9 +106,7 @@ function App() {
         </Typography>
       </Card>
     </>
-
   );
 }
 
 export default App;
-

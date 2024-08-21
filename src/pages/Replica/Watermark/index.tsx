@@ -17,6 +17,7 @@ function curentTime() {
 function App() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const bodyRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<MutationObserver | null>(null);
 
   // 画水印
   function waterMark() {
@@ -41,7 +42,11 @@ function App() {
         const img = canvasDom.toDataURL('image/png');
         const body = bodyRef.current;
         if (body) {
+          // 临时断开 MutationObserver
+          observerRef.current?.disconnect();
           body.setAttribute('style', `background-image:url("${img}")`);
+          // 重新连接 MutationObserver
+          observerRef.current?.observe(body, { attributes: true });
         }
       }
     }
@@ -55,16 +60,17 @@ function App() {
     // 用MutationObserver监听bodyRef是否被修改
     const observer = new MutationObserver(mutations => {
       for (const mutation of mutations) {
-        console.log(mutation.target); // 输出发生变化的节点
         if (mutation.target === bodyRef.current) {
           waterMark();
         }
       }
     });
+    observerRef.current = observer;
 
-    if (bodyRef.current) {
-      // 开始监测  
-      observer.observe(bodyRef.current, { attributes: true });
+    const body = bodyRef.current;
+    if (body) {
+      // 开始监测
+      observer.observe(body, { attributes: true });
     }
 
     // 组件销毁时停止监测

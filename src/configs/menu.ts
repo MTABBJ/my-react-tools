@@ -25,6 +25,11 @@ const MenuList: Menu.MenuItemType[] = [
         icon: 'icon-link',
         path: '/replica/watermark',
       },
+      {
+        label: '图片标注',
+        icon: 'icon-link',
+        path: '/replica/dimension',
+      },
     ]
   },
   {

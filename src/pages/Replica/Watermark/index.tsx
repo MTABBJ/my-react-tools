@@ -11,7 +11,7 @@ function curentTime() {
   let newMonth = (newTime.getMonth() + 1) > 9 ? (newTime.getMonth() + 1) : "0" + (newTime.getMonth() + 1);
   // 获取时间
   let newDay = newTime.getDate() > 9 ? newTime.getDate() : "0" + newTime.getDate();
-  return newYarn + '-' + newMonth + ' -' + newDay;
+  return newYarn + '-' + newMonth + '-' + newDay;
 }
 
 function App() {
